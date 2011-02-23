@@ -32,6 +32,7 @@ class YahooCrawler
       loop do
         begin
           fetch
+          yield # callback
         rescue => e
           puts "Error fetching data: #{e.message}"
         end
@@ -46,6 +47,10 @@ class YahooCrawler
       @thread.kill
       @thread = nil
     end
+  end
+  
+  def join_reload_thread
+      @thread.join if @thread
   end
 
   def fetch
