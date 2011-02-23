@@ -9,6 +9,14 @@ class OptionQuote
     @bid = args[:bid] || nil
     @ask = args[:ask] || nil
   end
+  
+  def spread
+    if @bid and @ask
+      @ask - @bid
+    else
+      nil
+    end
+  end
 
   def to_s
     "#{option.to_s}: #{bid.inspect} / #{ask.inspect}"

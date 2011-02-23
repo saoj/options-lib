@@ -21,7 +21,7 @@ y.auto_reload(reload_period) do
   quote = options[strike]
   stock_price = y.curr_stock_price
   
-  puts "Stock @ #{stock_price} Options: #{quote.bid} | #{quote.ask}"
+  puts "Stock @ #{stock_price} Options: #{quote.bid} | #{quote.ask} Spread: #{quote.spread.prettify}"
   
 end
 

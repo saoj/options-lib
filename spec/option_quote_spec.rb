@@ -13,4 +13,11 @@ describe OptionQuote do
     
   end
   
+  it 'should have an spread' do
+    o = Option.new(Option::CALL, 'AAPL', 250, '2010-02-14')
+    q = OptionQuote.new(o, :bid => 1.2, :ask => 1.4)
+    q.spread.prettify.should == "0.2"
+    
+  end
+  
 end
