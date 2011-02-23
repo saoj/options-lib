@@ -40,7 +40,7 @@ describe Option do
   
   it 'has an internal symbol representation implied from stock, strike and experiration' do
     o = Option.new(Option::PUT, 'AAPL', 250, '2010-08-14')
-    o.internal_symbol.should == 'AAPL_P250_14-AUG-2010'
+    o.internal_symbol.should == 'AAPL_P250_14AUG2010'
   end
   
   it 'makes the symbol equals to the internal symbol if symbol not provided' do
@@ -51,7 +51,7 @@ describe Option do
   it 'can have a symbol' do
     o = Option.new(Option::PUT, 'AAPL', 250, '2010-08-14', 'MYSYMBOL')
     o.symbol.should == 'MYSYMBOL'
-    o.internal_symbol.should == 'AAPL_P250_14-AUG-2010'
+    o.internal_symbol.should == 'AAPL_P250_14AUG2010'
   end
 
   it 'can show to number of business day until expiration' do

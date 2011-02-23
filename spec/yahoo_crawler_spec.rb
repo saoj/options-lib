@@ -36,12 +36,12 @@ describe YahooCrawler do
     good_price = ((y.curr_stock_price / 100).to_i * 100).to_f
   
     call_quote = y.call_options[good_price]
-    call_quote.option.internal_symbol.should == "AAPL_C#{good_price.to_i}_18-JAN-2013"
+    call_quote.option.internal_symbol.should == "AAPL_C#{good_price.to_i}_18JAN2013"
     call_quote.bid.should > 0
     call_quote.ask.should > 0
     
     put_quote = y.put_options[good_price]
-    put_quote.option.internal_symbol.should == "AAPL_P#{good_price.to_i}_18-JAN-2013"
+    put_quote.option.internal_symbol.should == "AAPL_P#{good_price.to_i}_18JAN2013"
     put_quote.bid.should > 0
     put_quote.ask.should > 0
     

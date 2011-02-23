@@ -20,8 +20,8 @@ class Option
     end
     
     s = "#{stock}_#{type == CALL ? 'C' : 'P'}#{@strike.prettify}_#{@exp.day}"
-    s << "-#{Date::MONTHNAMES[@exp.month][0,3].upcase}"
-    s << "-#{@exp.year.to_s}"
+    s << Date::MONTHNAMES[@exp.month][0,3].upcase
+    s << @exp.year.to_s
     @internal_symbol = s
 
     if not symbol
