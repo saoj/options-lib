@@ -2,8 +2,15 @@ class Float
   
   # Supress decimal part if it is zero
   # 40.0 becomes "40"
+  # Take care of float imprecision
+  # 1.1-0.9 # >> 0.20000000000000007
+  # (1.1-0.9).prettify # >> "0.2"
   def prettify
-    to_i == self ? to_i.to_s : self.to_s
+    num = "%.12g" % self
+    num.sub!($1, '') if num =~ /\..*?(0+)$/
+    # might be like 2. at this point
+    num = num[0..-2] if num[-1] == '.'
+    num
   end
 end
 

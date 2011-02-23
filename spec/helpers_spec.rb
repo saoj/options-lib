@@ -12,6 +12,11 @@ describe Float do
     # if decimal part is 0, do not print it
     f = 50.0
     f.prettify.should == "50"
+    
+    # take care of ruby float imprecision
+    f = 1.1 - 0.9
+    f.should_not == 0.2 # weird but true !!!
+    f.prettify.should == "0.2" # much better!
   end
 end
 
