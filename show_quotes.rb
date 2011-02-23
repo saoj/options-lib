@@ -8,7 +8,7 @@ if ARGV.length != 5
 end
 
 stock = ARGV[0]
-is_call = ARGV[1].casecmp "C"
+is_call = ARGV[1].casecmp("C") == 0
 strike = ARGV[2].to_f
 expiration = ARGV[3]
 reload_period = ARGV[4].to_i
