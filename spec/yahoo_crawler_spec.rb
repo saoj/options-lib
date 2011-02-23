@@ -47,5 +47,13 @@ describe YahooCrawler do
     
   end
   
+  it 'should be able to update the quotes in a background thread' do
+  
+    y.auto_reload(1)
+    y.call_options.length.should > 0
+    y.put_options.length.should > 0
+    
+  end
+
     
 end

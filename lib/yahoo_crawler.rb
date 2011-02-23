@@ -5,6 +5,8 @@ require_relative 'option'
 require_relative 'option_quote'
 require_relative 'helpers'
 
+# A Yahoo!Finance crawler implemented using Mechanize to parse HTML and extract
+# options quotes for given stock and expiration date.
 class YahooCrawler
 
   def initialize(stock, exp)
@@ -149,6 +151,8 @@ class YahooCrawler
     OptionQuote.new(o, :bid => bid, :ask => ask)
   end
 
+  # Get all values inside tags
+  # Ex: <h1>234</h1> will return "234"
   def parse_data(data)
     data.scan(/\>[0-9\.A-Z\,\/]+\</).collect { |i| i.gsub(/[\<\>]/, "") }
   end
