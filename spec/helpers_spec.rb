@@ -14,3 +14,28 @@ describe Float do
     f.prettify.should == "50"
   end
 end
+
+describe Array do
+
+  it 'can be broken into chunks of smaller arrays' do
+    
+    # the first chunk is always the bigger in case the number of 
+    # elements are not divisible by pieces
+    
+    a = [1,2,3,4]
+    a.chunk.should == [[1,2],[3,4]]
+    a.chunk(3).should == [[1,2],[3],[4]]
+    a.chunk(4).should == [[1],[2],[3],[4]]
+    
+    a << 5 << 6
+    a.chunk.should == [[1,2,3],[4,5,6]]
+    a.chunk(3).should == [[1,2],[3,4],[5,6]]
+    
+    a << 7
+    a.chunk.should == [[1,2,3,4],[5,6,7]]
+    a.chunk(3).should == [[1,2,3],[4,5],[6,7]]
+    
+  end
+  
+end
+
