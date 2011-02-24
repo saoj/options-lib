@@ -42,8 +42,15 @@ task :reinstall do
   Rake::Task[:install].invoke
 end
 
+desc "Push gem to RubyGems.org"
+task :push do
+  system "gem push pkg/#{gemspec.name}-#{gemspec.version}.gem"
+end
+
 alias_task(:reinstall, :r)
 alias_task(:uninstall, :u)
 alias_task(:install, :i)
 alias_task(:build, :b)
+alias_task(:push, :p)
+
 
