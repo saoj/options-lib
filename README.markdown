@@ -5,7 +5,7 @@ thread that can be started to periodically update the option quotes.
 
 ## Donate
 
-If this project has helped you make money in the stock market, please consider donating. Thanks!
+If this project has helped you make money in the stock market, please consider donating. This will help me justify to my family and friends why I spend so much time in front of a computer. Thanks!
 
 <div style="padding:2px; border:1px solid silver; float:right; margin:0 0 1em 2em; background:white">
 	<a href='http://www.pledgie.com/campaigns/14723' target="_blank"><img src='http://pledgie.com/campaigns/14723.png?skin_name=chrome' border='0' alt="Click here to lend your support to: Sergio's Open Source projects and make a donation at www.pledgie.com !" /></a> 
