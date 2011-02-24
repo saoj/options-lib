@@ -57,6 +57,17 @@ thread that can be started to periodically update the option quotes.
 	y.internal_symbol # => AAPL_C300_18JAN2013
 	y.symbol # => AAPL130119C00300000
 
+## Executable
+
+It comes with the 'show_quotes' executable.
+
+	[soliveira@sergio-macos options-lib]$ show_quotes
+	format: show_quotes <stock> <call_or_put> <strike> <expiration> <reload_period>
+	example: show_quotes AAPL C 345 2013-01-18 5
+	[soliveira@sergio-macos options-lib]$ show_quotes AAPL C 345 2013-01-18 5
+	Stock @ 342.88 Options: 65.9 | 67.8 Spread: 1.9
+	Stock @ 342.88 Options: 65.9 | 67.8 Spread: 1.9
+
 	
 	
 	
