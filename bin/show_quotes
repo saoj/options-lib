@@ -1,5 +1,11 @@
-# require all files from lib
-Dir["./lib/*.rb"].each {|file| require file }
+#!/usr/bin/env ruby
+
+begin
+  require 'options-lib'
+rescue LoadError
+  require 'rubygems'
+  require 'options-lib'
+end
 
 if ARGV.length != 5
   puts "format: ruby show_quotes.rb <stock> <call_or_put> <strike> <expiration> <reload_period>"

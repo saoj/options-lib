@@ -10,4 +10,4 @@ doc/app
 *˜
 *~
 .DS_Store
-
+options-lib-*.gem
