@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name    = 'options-lib'
-  s.version = '0.9.3'
+  s.version = '0.9.4'
   s.platform = Gem::Platform::RUBY
   s.summary = 'Options Library'
   s.description = 'A set of classes for dealing with options. It includes a crawler for Yahoo!Finance.'
