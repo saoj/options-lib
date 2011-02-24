@@ -35,6 +35,10 @@ If this project has helped you make money in the stock market, please consider d
 	q.bid # => 88.5
 	q.ask # => 90.5
 	
+	# internal symbol versus real symbol
+	q.internal_symbol # => AAPL_C300_18JAN2013
+	q.symbol # => AAPL130119C00300000
+	
 	# Crawler also has current stock price, as each option quote
 	y.stock_price # => 342.88
 	
@@ -61,10 +65,6 @@ If this project has helped you make money in the stock market, please consider d
 	# you can use the method below
 	y.join_reload_thread
 	
-	# internal symbol versus real symbol
-	y.internal_symbol # => AAPL_C300_18JAN2013
-	y.symbol # => AAPL130119C00300000
-
 ## Executable
 
 It comes with the 'show_quotes' executable.
