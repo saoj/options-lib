@@ -25,7 +25,7 @@ y.auto_reload(reload_period) do
   
   options = is_call ? y.call_options : y.put_options
   quote = options[strike]
-  stock_price = y.curr_stock_price
+  stock_price = y.stock_price
   
   puts "Stock @ #{stock_price} Options: #{quote.bid} | #{quote.ask} Spread: #{quote.spread}"
   
