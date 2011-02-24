@@ -36,8 +36,8 @@ If this project has helped you make money in the stock market, please consider d
 	q.ask # => 90.5
 	
 	# internal symbol versus real symbol
-	q.internal_symbol # => AAPL_C300_18JAN2013
-	q.symbol # => AAPL130119C00300000
+	q.option.internal_symbol # => AAPL_C300_18JAN2013
+	q.option.symbol # => AAPL130119C00300000
 	
 	# Crawler also has current stock price, as each option quote
 	y.stock_price # => 342.88
