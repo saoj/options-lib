@@ -12,7 +12,7 @@ class OptionQuote
   
   def spread
     if @bid and @ask
-      @ask - @bid
+      (@ask - @bid).prettify.to_f
     else
       nil
     end

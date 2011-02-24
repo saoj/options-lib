@@ -8,8 +8,8 @@ rescue LoadError
 end
 
 if ARGV.length != 5
-  puts "format: ruby show_quotes.rb <stock> <call_or_put> <strike> <expiration> <reload_period>"
-  puts "example: ruby show_quotes.rb AAPL C 345 2013-01-18 5"
+  puts "format: show_quotes <stock> <call_or_put> <strike> <expiration> <reload_period>"
+  puts "example: show_quotes AAPL C 345 2013-01-18 5"
   exit
 end
 
@@ -27,7 +27,7 @@ y.auto_reload(reload_period) do
   quote = options[strike]
   stock_price = y.curr_stock_price
   
-  puts "Stock @ #{stock_price} Options: #{quote.bid} | #{quote.ask} Spread: #{quote.spread.prettify}"
+  puts "Stock @ #{stock_price} Options: #{quote.bid} | #{quote.ask} Spread: #{quote.spread}"
   
 end
 

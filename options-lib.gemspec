@@ -16,17 +16,11 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'mechanize'
 
   # The list of files to be contained in the gem
-  s.files         = `git ls-files`.split("\n")
-  #s.files = s.files - [".gitignore"]
-  #s.files = Dir['lib/**/*.rb']
-  puts s.files
+  s.files         = `git ls-files`.split("\n") - [".gitignore"]
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  # s.extensions    = `git ls-files ext/extconf.rb`.split("\n")
   
   # Supress the warning about no rubyforge project
   s.rubyforge_project = 'nowarning'
-  
-  # LOAD_PATH
-  #s.require_paths = ['lib']
+
 end

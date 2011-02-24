@@ -1,2 +1,6 @@
 # require all files from options-lib
-Dir["./lib/options-lib/**/*.rb"].each { |file| require file.sub("./lib/", "") }
+require 'options-lib/helpers'
+require 'options-lib/option'
+require 'options-lib/option_quote'
+require 'options-lib/yahoo_crawler'
+

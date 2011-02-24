@@ -37,13 +37,13 @@ describe YahooCrawler do
   
     call_quote = y.call_options[good_price]
     call_quote.option.internal_symbol.should == "AAPL_C#{good_price.to_i}_18JAN2013"
-    call_quote.bid.should > 0
-    call_quote.ask.should > 0
+    call_quote.bid.should > 0 if not call_quote.bid.nil?
+    call_quote.ask.should > 0 if not call_quote.ask.nil?
     
     put_quote = y.put_options[good_price]
     put_quote.option.internal_symbol.should == "AAPL_P#{good_price.to_i}_18JAN2013"
-    put_quote.bid.should > 0
-    put_quote.ask.should > 0
+    put_quote.bid.should > 0 if not put_quote.bid.nil?
+    put_quote.ask.should > 0 if not put_quote.ask.nil?
     
   end
   
