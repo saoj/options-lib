@@ -54,6 +54,13 @@ describe YahooCrawler do
     y.put_options.length.should > 0
     
   end
+  
+  it 'should accept integers as well as floats for strike prices when accessing the options hash' do
+    
+    y.call_options[300].should == y.call_options[300.0]
+    
+  end
+  
 
     
 end

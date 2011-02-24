@@ -11,7 +11,7 @@ class YahooCrawler
 
   def initialize(stock, exp)
     @mech = Mechanize.new
-    @stock, @exp = stock, exp
+    @stock, @exp = stock.upcase, exp
     @url = "http://finance.yahoo.com/q/op?s=#{stock}&m=#{exp[0,7]}"
     @stock_curr_price = nil
     @call_options = Hash.new
@@ -21,6 +21,10 @@ class YahooCrawler
     @lock = Mutex.new
     @t_lock = Mutex.new
     @thread = nil
+  end
+
+  def to_s
+    "YahooCrawler('#{@stock}','#{@exp})"
   end
 
   def auto_reload(period = 60)
@@ -58,6 +62,9 @@ class YahooCrawler
     c_options, p_options = Hash.new, Hash.new
     c_strikes, p_strikes = Array.new, Array.new
     stock_price = nil
+    
+    # A small hack to make my hashes accept integers instead of floats for the strike prices
+    add_convert_method_for_keys(c_options, p_options)
 
     @t_lock.synchronize { # don't step into each other in case someone calls fetch
 
@@ -97,7 +104,7 @@ class YahooCrawler
       @call_strikes, @put_strikes = c_strikes, p_strikes
       @curr_stock_price = stock_price
     }
-    
+    nil    
   end
 
   def get_option_quote(type, strike)
@@ -164,6 +171,15 @@ class YahooCrawler
 
   def f(data)
     data == 'N/A' ? nil : data.to_f
+  end
+  
+  def add_convert_method_for_keys(*args)
+    args.each do |obj|
+      def obj.[](key)
+        super key.to_f
+      end
+    end
+    
   end
 
 end
