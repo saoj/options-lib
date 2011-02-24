@@ -2,12 +2,13 @@ require_relative 'option'
 
 class OptionQuote
 
-  attr_reader :option, :bid, :ask
+  attr_reader :option, :bid, :ask, :stock_price
 
   def initialize(option, args)
     @option = option
     @bid = args[:bid] || nil
     @ask = args[:ask] || nil
+    @stock_price = args[:stock_price] || nil
   end
   
   def spread
@@ -19,11 +20,7 @@ class OptionQuote
   end
 
   def to_s
-    "#{option.to_s}: #{bid.inspect} / #{ask.inspect}"
-  end
-
-  def inspect
-    "#{option.inspect}: bid => #{bid.inspect}, ask => #{ask.inspect}"
+     "#{option}: bid => #{bid}, ask => #{ask}"
   end
 
 end

@@ -13,7 +13,7 @@ class YahooCrawler
     @mech = Mechanize.new
     @stock, @exp = stock.upcase, exp
     @url = "http://finance.yahoo.com/q/op?s=#{stock}&m=#{exp[0,7]}"
-    @stock_curr_price = nil
+    @stock_price = nil
     @call_options = Hash.new
     @put_options = Hash.new
     @call_strikes = Array.new
@@ -81,7 +81,7 @@ class YahooCrawler
       lines = lines.chunk(lines.length / 8)
 
       lines.each do |array|
-        quote = parse_quote(array, Option::CALL)
+        quote = parse_quote(array, Option::CALL, stock_price)
         c_options[quote.option.strike] = quote
       end
 
@@ -89,7 +89,7 @@ class YahooCrawler
       lines = lines.chunk(lines.length / 8)
 
       lines.each do |array|
-        quote = parse_quote(array, Option::PUT)
+        quote = parse_quote(array, Option::PUT, stock_price)
         p_options[quote.option.strike] = quote
       end
 
@@ -102,7 +102,7 @@ class YahooCrawler
     @lock.synchronize {
       @call_options, @put_options = c_options, p_options
       @call_strikes, @put_strikes = c_strikes, p_strikes
-      @curr_stock_price = stock_price
+      @stock_price = stock_price
     }
     nil    
   end
@@ -139,8 +139,8 @@ class YahooCrawler
     @lock.synchronize { @put_options }
   end
 
-  def curr_stock_price
-    @lock.synchronize { @curr_stock_price }
+  def stock_price
+    @lock.synchronize { @stock_price }
   end
 
   def show_calls
@@ -153,14 +153,14 @@ class YahooCrawler
 
   private
 
-  def parse_quote(line, type)
+  def parse_quote(line, type, stock_price)
     strike = line[0].to_f
     symbol = line[1]
     bid = f line[4]
     ask = f line[5]
 
     o = Option.new(type, @stock, strike, @exp, symbol)
-    OptionQuote.new(o, :bid => bid, :ask => ask)
+    OptionQuote.new(o, :bid => bid, :ask => ask, :stock_price => stock_price)
   end
 
   # Get all values inside tags
