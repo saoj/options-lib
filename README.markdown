@@ -1,5 +1,7 @@
 # Options-Lib
 
+<b>Note:</b> This lib is currently not working with Yahoo!Finance. It was done 6 years ago and needs to be udpated to parse the latest Yahoo!Finance quote layout. I plan to migrate this code to Scala in a near future.
+
 A set of classes for dealing with options. It includes a crawler for Yahoo!Finance. The crawler has an internal
 thread that can be started to periodically update the option quotes.
 
